@@ -1,5 +1,11 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require("../config/conexion.php");
+include('../templates/header.html');
 
 $nuevoDescuento = $_POST['nuevo_descuento'];
 $idProducto = $_POST['id_producto'];
@@ -7,50 +13,23 @@ $idTienda = $_POST['id_tienda'];
 
 // Validar y sanitizar los datos si es necesario
 
-$query = "UPDATE stock_oferta SET porcentaje_descuento = :nuevoDescuento WHERE id_producto = :idProducto AND id_tienda = :idTienda";
+$query = "SELECT update_discount(:nuevoDescuento, :idProducto, :idTienda) AS mensaje";
 $stmt = $db->prepare($query);
 $stmt->bindParam(':nuevoDescuento', $nuevoDescuento);
 $stmt->bindParam(':idProducto', $idProducto);
 $stmt->bindParam(':idTienda', $idTienda);
 $stmt->execute();
 
-?>
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-<style>
-    .mensaje-actualizacion {
-        display: block;
-        text-align: center;
-        font-size: 24px;
-        margin-top: 20px;
-    }
-</style>
-
-<?php
-if ($stmt->rowCount() > 0) {
-    echo "<span class='mensaje-actualizacion'>Stock actualizado correctamente.</span>";
+if ($result && isset($result['mensaje'])) {
+    echo "<span class='mensaje-actualizacion'>" . $result['mensaje'] . "</span>";
 } else {
-    echo "<span class='mensaje-actualizacion'>No se pudo actualizar el stock.</span>";
+    echo "<span class='mensaje-actualizacion'>Error al ejecutar el procedimiento almacenado.</span>";
 }
 ?>
 
-<style>
-    .btn-volver {
-        display: block;
-        margin: 0 auto;
-        width: 150px;
-        text-align: center;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
-
-    .btn-volver:hover {
-        background-color: #45a049;
-    }
-</style>
-
+<head>
+<link rel="stylesheet" type="text/css" href="../styles/style.css">
+</head>
 <a href="../admin_index.php" class="btn-volver">Volver Inicio</a>

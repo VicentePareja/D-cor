@@ -10,56 +10,13 @@ include('./templates/header.html');
 
 <html>
 <head>
-<style>
-body {
-    font-family: Arial, sans-serif;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.title {
-    text-align: center;
-    padding: 20px;
-    color: #333;
-}
-
-.input-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.input-container input {
-    padding: 5px;
-    font-size: 14px;
-}
-
-.button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-}
-
-.button:hover {
-    background-color: #0056b3;
-    color: white;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="./styles/style.css">
 </head>
 <body>
+    <div class="title">
+        <h1> Décor </h1>
+    </div>
     <div class='container'>
-        <h1 class='title'> Décor </h1>
         <?php
         if (empty($_SESSION['username'])) {
         ?>
@@ -98,4 +55,8 @@ body {
         </p>
     </footer>
 </body>
+<div class="logo">
+    <img src="images/logo2.jpg" alt="">
+</div>
+
 </html>

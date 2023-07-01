@@ -13,6 +13,10 @@ error_reporting(E_ALL);
     $usuarios = $result -> fetchAll();
 ?>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+</head>
+
     <body>
         <table class='table'>
             <thead>

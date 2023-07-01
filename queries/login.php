@@ -20,14 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (count($result) > 0) {
         $_SESSION['username'] = $username;
-        $userType = $result[0]['tipo']; // Obtener el tipo de usuario
+        $userType = $result[0]['tipo'];
 
         if ($userType === 'Admin') {
             header('Location: https://codd.ing.puc.cl/~grupo30/admin_index.php');
         } elseif ($userType === 'Cliente') {
             header('Location: https://codd.ing.puc.cl/~grupo30/client_index.php');
         } else {
-            // Tipo de usuario desconocido
             echo "<h2 class='subtitle'>Tipo de usuario desconocido</h2>";
         }
         exit;

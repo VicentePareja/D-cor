@@ -1,61 +1,152 @@
-body{
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    /* Aumentado de 50px a 80px */
+    width: 100%;
+    background-color: #847577;
+    z-index: 1000;
+}
+
+body {
+    padding-top: 90px;
+    /* Aumentado de 60px a 90px para tener en cuenta el mayor tamaño de la franja superior */
     font-family: 'Montserrat', sans-serif;
     margin: 0%;
+    background-color: #E2D5C1;
 }
 
-.main{
+.title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    margin: 0;
+    font-size: xx-large;
+    color: #E2D5C1;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    /* Cambiado de center a space-between para alinear la imagen a la izquierda y el título a la derecha */
+    align-items: center;
+    padding: 0 20px;
+    /* Agregado padding para evitar que la imagen y el título se peguen a los bordes de la pantalla */
+}
+
+.title img {
+    height: 60px;
+    /* Aumentado de 40px a 60px para llenar mejor la franja superior */
+    width: auto;
+    margin-right: 10px;
+}
+
+
+.main {
     padding: 3%;
+    max-width: 960px;
+    margin: auto;
 }
 
-.title{
-    margin: 0%;
-    padding: 3%;
-    text-align: center;
-    line-height: normal;
-    font-size: xxx-large;
-}
-
-.container{
+.container {
     text-align: center;
     padding: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
 }
 
-a{
-    color: rgb(29, 27, 27);
+a {
+    color: #685044;
+    transition: color 0.3s ease;
 }
 
-footer{
+a:hover {
+    color: #847577;
+}
+
+footer {
     text-align: center;
     padding: 4% 0%;
     font-size: small;
+    color: #777;
 }
 
-.btn { 
-    color: white;
-    background-color: black;
-    font-size: 17px;
-    line-height: 16px;
-    padding: 6px;
-    border-radius: 10px;
-    font-family: san-serif;
-    font-weight: bold;
-    border: 3px solid rgb(255 255 255);
+.button,
+.btn,
+button {
+    color: #E2D5C1;
+    background-color: #847577;
+    border: 3px solid #847577;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.btn:hover { background: lightblue; }
-
-.btn:active { background: rgb(82, 190, 209); }
-
-.form-element {
-    margin: 2%;
+.button:hover,
+.btn:hover,
+button:hover {
+    background-color: #685044;
+    border-color: #685044;
 }
 
-.form-element input,select{
-    border: 0;
-    box-shadow: 0 0 15px 4px rgb(0 0 0 / 6%);
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+form h3 {
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-container input {
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
     font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: #847577;
+    background-color: #E2D5C1;
+}
+
+.input-container input[type="number"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.input-container input[type="number"]:focus {
+    outline: none;
+    border-color: #847577;
+    background-color: #E2D5C1;
 }
 
 .table {
@@ -63,12 +154,13 @@ footer{
     margin: 25px 0;
     font-size: 0.9em;
     min-width: 400px;
+    width: 100%;
+    text-align: center;
 }
 
 .table thead tr {
-    background-color: lightblue;
-    color: #000;
-    text-align: left;
+    background-color: #847577;
+    color: #fff;
 }
 
 .table th,
@@ -85,5 +177,101 @@ footer{
 }
 
 .table tbody tr:last-of-type {
-    border-bottom: 2px solid rgb(82, 166, 181);
+    border-bottom: 2px solid #847577;
+}
+
+/* Estilos para el dropdown */
+select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    appearance: none;
+    /* Quita la apariencia por defecto del sistema operativo */
+    width: 100%;
+    /* Ajusta el ancho del dropdown al 100% */
+}
+
+/* Estilos para las opciones del dropdown */
+option {
+    padding: 8px;
+}
+
+/* Estilos adicionales para cuando el dropdown está abierto */
+select:focus {
+    outline: none;
+    border-color: #847577;
+    background-color: #E2D5C1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para la flecha del dropdown */
+select::-ms-expand {
+    display: none;
+    /* Oculta la flecha en Internet Explorer */
+}
+
+select::after {
+    content: '\25BC';
+    /* Agrega una flecha hacia abajo como contenido después del select */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Evita que la flecha sea seleccionable */
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 20px;
+    width: 100%;
+    background-color: #847577;
+    z-index: 1000;
+}
+
+.logo {
+    position: fixed;
+    bottom: 60px;
+    /* Aumentamos en 20 píxeles */
+    left: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+.logo img {
+    height: 170px;
+    width: auto;
+    border: 2px solid #847577;
+}
+
+
+.mensaje-actualizacion {
+    font-size: 18px;
+    color: #847577;
+    margin-bottom: 20px;
+}
+
+.btn-volver {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #847577;
+    color: white;
+    border-radius: 5px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
 }

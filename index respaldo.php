@@ -9,8 +9,11 @@ include('./templates/header.html');
 ?>
 
 <body>
+    <div class="title">
+        <h1> Décor </h1>
+    </div>
     <div class='main'>
-        <h1 class='title'> Décor </h1>
+
         <?php
         if (empty($_SESSION['username'])) {
         ?>
