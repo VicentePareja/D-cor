@@ -43,12 +43,6 @@ include('./templates/header.html');
             <button class="button" name="logout">Logout</button>
         </form>
         <?php } ?>
-        <div>
-            <h3>Importar usuarios</h3>
-            <form action='./queries/importar_usuarios.php' method='POST'>
-                <input class='button' type='submit' value='Importar usuarios'>
-            </form>
-        </div>
     </div>
     <footer>
         <p>

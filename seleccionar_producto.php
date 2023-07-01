@@ -50,4 +50,5 @@ $productos_stock = $result->fetch(PDO::FETCH_ASSOC);
 
 </body>
 
+
 </html>

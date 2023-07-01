@@ -92,3 +92,5 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
         <a href="concretar_compra.php" class="btn btn-primary">Concretar compra</a>
     </div>
 </body>
+
+

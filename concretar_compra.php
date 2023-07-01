@@ -30,7 +30,7 @@ if (!isset($_SESSION['carrito']) || empty($_SESSION['carrito'])) {
                     <tr>
                         <th>ID tienda</th>
                         <th>ID producto</th>
-                        <th>Nombre roducto</th>
+                        <th>Nombre producto</th>
                         <th>Precio original</th>
                         <th>Porcentaje descuento (%)</th>
                         <th>Precio con descuento</th> 

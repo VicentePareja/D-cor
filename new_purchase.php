@@ -35,8 +35,6 @@ WHERE
 ORDER BY precio_con_oferta ASC
 LIMIT 10");
 
-
-
 $query_productos->execute(array('%' . $nombre_producto . '%'));
 $productos = $query_productos->fetchAll(PDO::FETCH_ASSOC);
 
@@ -116,13 +114,13 @@ if (isset($_POST['agregar_al_carrito']) && isset($_POST['id_producto'])) {
             </table>
             <?php } ?>
         </div>
-        <a href="new_purchase.php" class="btn btn-primary">Volver</a>
-        <br>
-        <a href="ver_carrito.php"><button>Ver carrito</button></a>
-        <br>
-        <form method="POST" action="./queries/logout.php">
-            <button name="logout">Logout</button>
-        </form>
+        <div class="button-container">
+            <a href="new_purchase.php" class="btn btn-primary">Volver</a>
+            <a href="ver_carrito.php"><button>Ver carrito</button></a>
+            <form method="POST" action="./queries/logout.php">
+                <button name="logout">Logout</button>
+            </form>
+        </div>
         <?php } ?>
     </div>
     <footer>
@@ -130,5 +128,5 @@ if (isset($_POST['agregar_al_carrito']) && isset($_POST['id_producto'])) {
         </p>
     </footer>
 </body>
-</html>
 
+</html>

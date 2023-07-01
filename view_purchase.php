@@ -76,4 +76,5 @@ $fecha_despacho = $query_fecha_despacho->fetch(PDO::FETCH_ASSOC)['Fecha de Despa
         </p>
     </footer>
 </body>
+
 </html>

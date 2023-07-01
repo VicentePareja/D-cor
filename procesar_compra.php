@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-#session_start();
+session_start();
 require("config/conexion.php");
 include('./templates/header.html');
 
@@ -61,7 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             unset($_SESSION['carrito']);
             echo '<h2>Compra realizada exitosamente.</h2>';
             echo '<p>¡Gracias por tu compra!</p>';
-            echo '<a href="ver_despacho.php?id_compra='.$id_compra.'"><button>Ver información del despacho</button></a>';
+            
+            echo '<form method="POST" action="ver_despacho.php">';
+            echo '<button class="button" name="ver_despacho">Ver despacho</button>';
+            echo '</form>';
+            
+        
         } catch (PDOException $e) {
             // Si ocurre un error, deshacer la transacción
             $pdo->rollBack();

@@ -9,6 +9,12 @@ Este sistema permite gestionar compras de productos de decoración.
 - Registro de nuevas compras.
 - Visualización de detalles de las compras.
 
+## Consideraciones para la corrección
+- *Para iniciar sesión en la aplicación*, hay dos opciones, se puede ingresar como administrador con las credenciales 'Username': ADMIN y 'password': admin; también se puede ingresar como cliente. Para esto, se puede ingresar a la tabla usuarios de la base de datos grupo30e3 y obtener el nombre del usuario y su password.
+- *La asignación de contraseñas* a clientes se realizó dentro del procedimiento almacenado 'convertir_clientes_a_usuarios.sql' mediante la función MD5(RANDOM()::TEXT) de sql, que genera un decimal aleatorio entre 0 y 1, luego lo convierte a texto y luego calcula un hash de 32 caracteres hexadecimales. Para asignar las contraseñas a administradores, solo utilizamos la palabra ‘admin’ como pedía el enunciado.
+- *Para registrar clientes como usuarios* en primer lugar, creamos la tabla  usuarios (id int PRIMARY KEY, nombre varchar(30), region varchar(50), clave varchar(32), tipo varchar(10)) en la base de datos del grupo 30. Luego utilizamos el procedimiento almacenado convertir_clientes_a_usuarios(), con el que iteramos sobre la tabla clientes de la base de datos del grupo 30 para obtener los datos de clientes, en cada iteración se buscó en la tabla usuarios una entrada con esos datos y si es que no existía se insertó una fila adicional en la tabla usuarios. El código exacto está en el archivo convertir_clientes_a_usuarios.sql ubicado en grupo29/Entrega3
+
+
 ## Estructura del proyecto
 
 - `index.php`: Página de inicio. Incluye funcionalidad de inicio y cierre de sesión y la opción para importar usuarios.
@@ -17,6 +23,24 @@ Este sistema permite gestionar compras de productos de decoración.
 - `/queries`: Contiene archivos PHP que realizan diversas consultas a la base de datos, como `login.php`, `logout.php`, `importar_usuarios.php`.
 - `config/conexion.php`: Configura la conexión a la base de datos.
 - `/templates`: Contiene `header.html` que se incluye en cada archivo PHP.
+
+# De forma equivalente, la estructura incluye:
+.
+├── index.php               # Página de inicio. Funcionalidad de inicio y cierre de sesión, opción para importar usuarios.
+├── new_purchase.php        # Permite registrar nuevas compras y agregarlas al carrito. Funcionalidad de búsqueda de productos.
+├── view_purchase.php       # Permite visualizar los detalles de las compras.
+├── ver_carrito.php         # Muestra los productos en el carrito con opciones de eliminar productos o vaciar el carrito.
+├── config
+│   └── conexion.php        # Configura la conexión a la base de datos.
+├── queries
+│   ├── login.php           # Realiza la consulta de inicio de sesión.
+│   ├── logout.php          # Realiza la consulta de cierre de sesión.
+│   └── importar_usuarios.php # Realiza la importación de usuarios.
+├── templates
+│   └── header.html         # Se incluye en cada archivo PHP.
+└── styles
+    └── style.css           # Archivo CSS para los estilos de la aplicación.
+
 
 ## Requisitos
 

@@ -67,3 +67,4 @@ $tiendas = $result->fetchAll();
         </p>
     </footer>
 </body>
+

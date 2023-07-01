@@ -81,6 +81,7 @@ include('./templates/header.html');
         ?>
         </div>
         <form method="POST" action="./queries/logout.php">
+            <br>
             <button class="btn" name="logout">Logout</button>
         </form>
         <?php } ?>
@@ -90,4 +91,7 @@ include('./templates/header.html');
         </p>
     </footer>
 </body>
+<div class="logo">
+    <img src="images/logo2.jpg" alt="">
+</div>
 </html>
