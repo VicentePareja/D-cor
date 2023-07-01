@@ -13,13 +13,14 @@ Este sistema permite gestionar compras de productos de decoración.
 - *Para iniciar sesión en la aplicación*, hay dos opciones, se puede ingresar como administrador con las credenciales 'Username': ADMIN y 'password': admin; también se puede ingresar como cliente. Para esto, se puede ingresar a la tabla usuarios de la base de datos grupo30e3 y obtener el nombre del usuario y su password.
 - *La asignación de contraseñas* a clientes se realizó dentro del procedimiento almacenado 'convertir_clientes_a_usuarios.sql' mediante la función MD5(RANDOM()::TEXT) de sql, que genera un decimal aleatorio entre 0 y 1, luego lo convierte a texto y luego calcula un hash de 32 caracteres hexadecimales. Para asignar las contraseñas a administradores, solo utilizamos la palabra ‘admin’ como pedía el enunciado.
 - *Para registrar clientes como usuarios* en primer lugar, creamos la tabla  usuarios (id int PRIMARY KEY, nombre varchar(30), region varchar(50), clave varchar(32), tipo varchar(10)) en la base de datos del grupo 30. Luego utilizamos el procedimiento almacenado convertir_clientes_a_usuarios(), con el que iteramos sobre la tabla clientes de la base de datos del grupo 30 para obtener los datos de clientes, en cada iteración se buscó en la tabla usuarios una entrada con esos datos y si es que no existía se insertó una fila adicional en la tabla usuarios. El código exacto está en el archivo convertir_clientes_a_usuarios.sql ubicado en grupo29/Entrega3
+- *Sobre vistas* al iniiar sesión en index.php como cliente o administrador, se redirige a la vista client_index.php o admin_index.php respectivamente. 
 
 
 ## Estructura del proyecto
 
-- `index.php`: Página de inicio. Incluye funcionalidad de inicio y cierre de sesión y la opción para importar usuarios.
+- `index.php`: Página de inicio. Incluye funcionalidad de inicio y la opción para importar usuarios.
 - `new_purchase.php`: Permite registrar nuevas compras.
-- `view_purchase.php`: Permite visualizar los detalles de las compras incluyendo el nombre de cada producto comprado, el precio de cada producto, el número de cajas para cada producto, el precio total y la fecha de despacho programada si corresponde.
+- `view_purchase.php`: Permite visualizar los detalles de las compras
 - `/queries`: Contiene archivos PHP que realizan diversas consultas a la base de datos, como `login.php`, `logout.php`, `importar_usuarios.php`.
 - `config/conexion.php`: Configura la conexión a la base de datos.
 - `/templates`: Contiene `header.html` que se incluye en cada archivo PHP.
