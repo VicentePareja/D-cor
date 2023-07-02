@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userType = $result[0]['tipo'];
 
         if ($userType === 'Admin') {
-            header('Location: https://codd.ing.puc.cl/~grupo30/admin_index.php');
+            header('Location: https://codd.ing.puc.cl/~grupo29/admin_index.php');
         } elseif ($userType === 'Cliente') {
-            header('Location: https://codd.ing.puc.cl/~grupo30/client_index.php');
+            header('Location: https://codd.ing.puc.cl/~grupo29/client_index.php');
         } else {
             echo "<h2 class='subtitle'>Tipo de usuario desconocido</h2>";
         }

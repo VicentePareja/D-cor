@@ -42,12 +42,6 @@ include('./templates/header.html');
         
         <?php if (isset($_SESSION['username'])) { ?>
             <br>
-            <div>
-            <h3>Importar usuarios</h3>
-            <form action='./queries/importar_usuarios.php' method='POST'>
-                <input class='button' type='submit' value='Importar usuarios'>
-            </form>
-        </div>
         <br>
             <form method="POST" action="./queries/logout.php">
                 <button class='button' name="logout">Logout</button>

@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->execute();
                 $stmt->closeCursor();
 
-                // Llamar al procedimiento almacenado "actualizar_stock_compra" en $db
+
                 $stmt = $pdo->prepare("SELECT actualizar_stock_compra(:p_id_tienda, :p_id_producto)");
                 $stmt->bindParam(':p_id_tienda', $id_tienda, PDO::PARAM_INT);
                 $stmt->bindParam(':p_id_producto', $id_producto, PDO::PARAM_INT);
@@ -53,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->closeCursor();
             }
 
-            // Confirmar la transacción
             $pdo->commit();
             $pdo2->commit();
 
@@ -65,10 +64,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<form method="POST" action="ver_despacho.php">';
             echo '<button class="button" name="ver_despacho">Ver despacho</button>';
             echo '</form>';
-            
+            echo '<br>';
+            echo '<br>';
+            echo '<form method="POST" action="client_index.php">';
+            echo '<button class="button" name="ver_client_index">Ir a Mis Compras</button>';
+            echo '</form>';
+
         
         } catch (PDOException $e) {
-            // Si ocurre un error, deshacer la transacción
             $pdo->rollBack();
             $pdo2->rollBack();
             echo "Error al procesar la compra. " . $e->getMessage();

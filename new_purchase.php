@@ -115,7 +115,7 @@ if (isset($_POST['agregar_al_carrito']) && isset($_POST['id_producto'])) {
             <?php } ?>
         </div>
         <div class="button-container">
-            <a href="new_purchase.php" class="btn btn-primary">Volver</a>
+            <a href="client_index.php" class="btn btn-primary">Volver</a>
             <a href="ver_carrito.php"><button>Ver carrito</button></a>
             <form method="POST" action="./queries/logout.php">
                 <button name="logout">Logout</button>

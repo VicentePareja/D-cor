@@ -33,6 +33,12 @@ include('./templates/header.html');
                 <button class="button" type="submit" name="login">Login</button>
             </form>
         </div>
+        <div>
+            <h3>Importar usuarios</h3>
+            <form action='./queries/importar_usuarios.php' method='POST'>
+                <input class='button' type='submit' value='Importar usuarios'>
+            </form>
+        </div>
         <?php } ?>
 
         <?php if (isset($_SESSION['username'])) { ?>
